@@ -1,5 +1,7 @@
 const Joi = require('joi');
 const { object, string,array } = Joi.types();
+const handleError = require('../error');
+
 
 const schema = Joi.object({
     rule:  Joi.object().keys({
@@ -16,8 +18,8 @@ const  RuleDataExists = async (req,res,next)=>{
         next();
     }
     catch (err) { 
-        res.locals.error = err;
-        next();
+        errorMessage = handleError(err.details[0]);
+        res.status(400).json(errorMessage);
     }
 }
 

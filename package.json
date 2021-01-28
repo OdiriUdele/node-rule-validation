@@ -22,5 +22,8 @@
     "joi": "^17.3.0",
     "nodemon": "^2.0.7",
     "payload-validator": "^1.0.4"
+  },
+  "engines": {
+    "node": "12.18.3"
   }
 }
