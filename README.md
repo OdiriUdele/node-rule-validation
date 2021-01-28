@@ -17,7 +17,7 @@
 Added Dependencies like:
 - joi.
 - nodemon.
-- User Requests Loan and adds Collateral detailsexpress
+- express
 
 
 ## odiriudele@gmail.com
