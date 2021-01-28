@@ -1,0 +1,26 @@
+{
+  "name": "rule-validation",
+  "version": "1.0.0",
+  "description": "A simple rule validation",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OdiriUdele/node-rule-validation.git"
+  },
+  "author": "Odiri Udele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OdiriUdele/node-rule-validation/issues"
+  },
+  "homepage": "https://github.com/OdiriUdele/node-rule-validation#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.3.0",
+    "nodemon": "^2.0.7",
+    "payload-validator": "^1.0.4"
+  }
+}
