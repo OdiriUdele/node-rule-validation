@@ -12,9 +12,9 @@ const schema = Joi.object({
     data:Joi.alternatives().try(object,string,array).required()
 });
 
-const  RuleDataExists = async (req,res,next)=>{
+const  RuleDataExists = (req,res,next)=>{
     try {
-        const value = await schema.validateAsync(req.body);
+        const value = schema.validate(req.body);
         next();
     }
     catch (err) { 
