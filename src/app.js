@@ -15,6 +15,7 @@ app.use((err,req, res, next) => {//erroor handling
       error = handleError(err);
       res.status(400).json(error)
     }
+    next();
 });
 
 app.listen(process.env.PORT || Port);
