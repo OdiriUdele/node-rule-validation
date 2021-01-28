@@ -24,6 +24,6 @@
     "payload-validator": "^1.0.4"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "12.x"
   }
 }

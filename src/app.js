@@ -2,7 +2,7 @@ const express = require('express');
 const {RuleDataExists}  = require('./middleware/Middleware');
 const app = express();
 const handleError = require('./error');
-
+const Port = 3000;
 app.use(express.json())
 
 // routes
@@ -17,6 +17,6 @@ app.use((err,req, res, next) => {//erroor handling
     }
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || Port);
 
 console.log('app running at 3000');
