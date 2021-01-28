@@ -1,7 +1,7 @@
 
 
  
- <p align="center">Loan App</p>
+ <p align="center"> Node Rule Validation</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -23,4 +23,4 @@ Added Dependencies like:
 ## odiriudele@gmail.com
 
 
-The ode Rule Validation is written by [Odiri Udele](odiriudele@gmail.com).
+The Node Rule Validation is written by [Odiri Udele](odiriudele@gmail.com).
