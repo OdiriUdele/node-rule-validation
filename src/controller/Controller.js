@@ -9,6 +9,7 @@ const myDetails = {
 }
 
 module.exports.validate_rule = (req,res)=>{
+    try{
     let rule = req.body.rule;
     let data = req.body.data;
     field = rule.field.split(".");
@@ -32,9 +33,13 @@ module.exports.validate_rule = (req,res)=>{
             res.status(400).json(response);
         }
     }
+    }catch(err){
+        var response =  this.retun_json(err.message,null,'error');
+        res.status(400).json(response);
+    }
 }
 
-module.exports.return_details = async(req,res)=>{
+module.exports.return_details = (req,res)=>{
     var message = "My Rule-Validation API";
     var response =  retun_json(message,myDetails,'success');
     res.json(response);
@@ -64,32 +69,32 @@ validation_result = (valid,data,rule)=>{
 check_field = (field,data)=>{
     type = typeof data;//fetch datatype of data attribute
     bool=[false,null];//initialise boolean value
-    switch (type) {
-        case 'object':
-            if(data.hasOwnProperty(field[0])){//check if data has a property named field value
-                bool = [true,data[field[0]]];
-                for(var i=1;i<field.length;i++){//heck if data has a property named field value in the case of nested field values
-                    bool = [false,null];
-                    if(data[field[i-1]].hasOwnProperty(field[i])){
-                       bool = [true,data[field[i-1]][field[i]]];
+        switch (type) {
+            case 'object':
+                if(data.hasOwnProperty(field[0])){//check if data has a property named field value
+                    bool = [true,data[field[0]]];
+                    for(var i=1;i<field.length;i++){//heck if data has a property named field value in the case of nested field values
+                        bool = [false,null];
+                        if(data[field[i-1]].hasOwnProperty(field[i])){
+                        bool = [true,data[field[i-1]][field[i]]];
+                        }
                     }
                 }
-            }
+                return bool;
+            case 'array':
+                if(data.size() >=field){
+                    return [true,data[field]];
+                }
             return bool;
-        case 'array':
-            if(data.size() >=field){
-                return [true,data[field]];
-            }
-          return bool;
-        case 'string':
-            if(data.length >= field){
-                value = [...data];
-                return [true,value[field]];
-            }
-          return bool;
-        default:
-           return bool;
-      }
+            case 'string':
+                if(data.length >= field){
+                    value = [...data];
+                    return [true,value[field]];
+                }
+            return bool;
+            default:
+            return bool;
+        }
 }
 
 validate_condition = (data,rule)=>{
