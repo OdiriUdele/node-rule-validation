@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +19,12 @@
   },
   "homepage": "https://github.com/OdiriUdele/node-rule-validation#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
+    "jest": "^26.6.3",
     "joi": "^17.3.0",
+    "mocha": "^8.2.1",
     "nodemon": "^2.0.7",
     "payload-validator": "^1.0.4"
   },
