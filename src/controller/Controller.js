@@ -41,7 +41,7 @@ module.exports.validate_rule = (req,res)=>{
 
 module.exports.return_details = (req,res)=>{
     var message = "My Rule-Validation API";
-    var response =  retun_json(message,myDetails,'success');
+    var response =  this.retun_json(message,myDetails,'success');
     res.json(response);
 }
 
