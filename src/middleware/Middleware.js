@@ -1,27 +1,26 @@
-const Joi = require('joi');
+const Joi = require('joi'); //add joi dependency
 const { object, string,array } = Joi.types();
 const handleError = require('../error');
 
 
-const schema = Joi.object({
+const schema = Joi.object({ //define joi validation schema
     rule:  Joi.object().keys({
         field: Joi.string().required(),
-        condition: Joi.any().valid('eq', 'neq','gt', 'gte','contains').required(),
+        condition: Joi.alternatives().try('eq', 'neq','gt', 'gte','contains').required(),
         condition_value: Joi.any().required(),
-    }).required(),
-    data:Joi.alternatives().try(object,string,array).required()
+    }).required(), //set rule field to required
+    data:Joi.alternatives().try(object,string,array).required() //set data field to required
 });
 
-const  RuleDataExists = (req,res,next)=>{
+const  RuleDataExists = async(req,res,next)=>{
     try {
-        const value = schema.validate(req.body);
-        next();
+        const value = await schema.validateAsync(req.body); //validate schema
+        next();  //if middleware is satisfied then proceed to route method
     }
     catch (err) { 
-        errorMessage = handleError(err.details[0]);
+        errorMessage = handleError(err.details[0]);//call error handler function in event of an error
         res.status(400).json(errorMessage);
     }
 }
 
-
-module.exports= {RuleDataExists};
+module.exports= {RuleDataExists};//export middleware

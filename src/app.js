@@ -1,5 +1,5 @@
-const express = require('express');
-const {RuleDataExists}  = require('./middleware/Middleware');
+const express = require('express');//add express dependemcy 
+const {RuleDataExists}  = require('./middleware/Middleware');//fetch middleware
 const app = express();
 const handleError = require('./error');
 const Port = 3000;
@@ -12,12 +12,11 @@ app.use(require('./route/route'));
 
 app.use((err,req, res, next) => {//erroor handling
     if(err) {
-      error = handleError(err);
+      error = handleError(err);//call handleError function
       res.status(400).json(error)
     }
     next();
 });
 
-app.listen(process.env.PORT || Port);
 
-console.log('app running at 3000');
+app.listen(process.env.PORT || Port);
