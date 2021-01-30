@@ -6,7 +6,7 @@ const Port = 3000;
 app.use(express.json())
 
 // routes
-app.post('/validate-rule',RuleDataExists); //initial middleware to check if json value has the required fields
+//app.post('/validate-rule',RuleDataExists); //initial middleware to check if json value has the required fields
 
 app.use(require('./route/route'));
 

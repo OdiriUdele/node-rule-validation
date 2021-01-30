@@ -15,6 +15,7 @@ const schema = Joi.object({ //define joi validation schema
 const  RuleDataExists = async(req,res,next)=>{
     try {
         const value = await schema.validateAsync(req.body); //validate schema
+        res.status(200);
         next();  //if middleware is satisfied then proceed to route method
     }
     catch (err) { 
