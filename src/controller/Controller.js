@@ -13,7 +13,7 @@ module.exports.validate_rule = (req,res)=>{
     let rule = req.body.rule; //fetch rule attribute
     let data = req.body.data; //fetch data attribute from request body
     field = rule.field.split("."); //convert rule.field to array
-    if(field.lenght > 3){
+    if(field.length > 2){
         var response =  this.retun_json(`Invalid Field Nesting`,null,'error'); //get error response when rule.field nesting level is greater than 2
         res.status(400).json(response); //return error with status code 400
     }
@@ -82,7 +82,7 @@ check_field = (field,data)=>{
                 }
                 return bool;
             case 'array':
-                if(data.size() >=field){ //check if field exists when data is an array
+                if(data.size() >= field){ //check if field exists when data is an array
                     return [true,data[field]];
                 }
             return bool;
