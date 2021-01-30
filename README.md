@@ -28,11 +28,12 @@ Added Dependencies like:
     * npm install
 ## Example
 
-Example JSON request payloads:
+Example JSON request payloads:<br>
 = EX1 =
+```json
 {
   "rule": {
-    "field": "missions.count"
+    "field": "missions.count",
     "condition": "gte",
     "condition_value": 30
   },
@@ -42,16 +43,17 @@ Example JSON request payloads:
     "age": 34,
     "position": "Captain",
     "missions": {
-      count: 45,
-      successful: 44,
-      failed: 1
+      "Count": 45,
+      "successful": 44,
+      "failed": 1
     }
   }
 }
-
+```
 Response: (HTTP 200)
+```json
 {
-  "message": "field missions.count successfully validated."
+  "message": "field missions.count successfully validated.",
   "status": "success",
   "data": {
     "validation": {
@@ -63,20 +65,22 @@ Response: (HTTP 200)
     }
   }
 }
-
+```
 = EX2 =
+```json
 {
   "rule": {
-    "field": "0"
+    "field": "0",
     "condition": "eq",
     "condition_value": "a"
   },
   "data": "damien-marley"
 }
-
+```
 Response: (HTTP 400)
+```json
 {
-  "message": "field 0 failed validation."
+  "message": "field 0 failed validation.",
   "status": "error",
   "data": {
     "validation": {
@@ -84,29 +88,31 @@ Response: (HTTP 400)
       "field": "0",
       "field_value": "d",
       "condition": "eq",
-      "condition_value: "a"
+      "condition_value": "a"
     }
   }
 }
-
+```
 
 = EX3 =
+```json
 {
   "rule": {
-    "field": "5"
+    "field": "5",
     "condition": "contains",
     "condition_value": "rocinante"
   },
   "data": ["The Nauvoo", "The Razorback", "The Roci", "Tycho"]
 }
-
+```
 Response: (HTTP 400)
+```json
 {
-  "message": "field 5 is missing from data."
+  "message": "field 5 is missing from data.",
   "status": "error",
   "data": null
 }
-
+```
 
 ## odiriudele@gmail.com
 
