@@ -18,6 +18,94 @@ Added Dependencies like:
 - joi.
 - nodemon.
 - express
+- jest
+ -supertest
+
+
+## Getting Started
+
+    * Clone the repository 
+    * npm install
+## Example
+
+Example JSON request payloads:
+= EX1 =
+{
+  "rule": {
+    "field": "missions.count"
+    "condition": "gte",
+    "condition_value": 30
+  },
+  "data": {
+    "name": "James Holden",
+    "crew": "Rocinante",
+    "age": 34,
+    "position": "Captain",
+    "missions": {
+      count: 45,
+      successful: 44,
+      failed: 1
+    }
+  }
+}
+
+Response: (HTTP 200)
+{
+  "message": "field missions.count successfully validated."
+  "status": "success",
+  "data": {
+    "validation": {
+      "error": false,
+      "field": "missions.count",
+      "field_value": 45,
+      "condition": "gte",
+      "condition_value: 30
+    }
+  }
+}
+
+= EX2 =
+{
+  "rule": {
+    "field": "0"
+    "condition": "eq",
+    "condition_value": "a"
+  },
+  "data": "damien-marley"
+}
+
+Response: (HTTP 400)
+{
+  "message": "field 0 failed validation."
+  "status": "error",
+  "data": {
+    "validation": {
+      "error": true,
+      "field": "0",
+      "field_value": "d",
+      "condition": "eq",
+      "condition_value: "a"
+    }
+  }
+}
+
+
+= EX3 =
+{
+  "rule": {
+    "field": "5"
+    "condition": "contains",
+    "condition_value": "rocinante"
+  },
+  "data": ["The Nauvoo", "The Razorback", "The Roci", "Tycho"]
+}
+
+Response: (HTTP 400)
+{
+  "message": "field 5 is missing from data."
+  "status": "error",
+  "data": null
+}
 
 
 ## odiriudele@gmail.com
